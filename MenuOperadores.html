@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu de Exercícios</title>
+</head>
+<body>
+    <script>
+        const somar = (a, b) => a + b;
+        const subtrair = (a, b) => a - b;
+
+        function contarParesAte(n) {
+            let contador = 1;
+            let totalPares = 0;
+
+            while (contador <= n) {
+                if (contador % 2 === 0) {
+                    totalPares++;
+                }
+                contador++;
+            }
+            return totalPares;
+        }
+
+        function contarImparesAte(n) {
+            let totalImpares = 0;
+            for (let i = 1; i < n; i += 2) {
+                totalImpares++;
+            }
+            return totalImpares;
+        }
+
+        function contarPrimosAte(n) {
+            let totalPrimos = 0;
+            for (let num = 2; num <= n; num++) {
+                let ehPrimo = true;
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) {
+                        ehPrimo = false;
+                        break;
+                    }
+                }
+                if (ehPrimo) {
+                    totalPrimos++;
+                }
+            }
+            return totalPrimos;
+        }
+
+        let opcao;
+
+        do {
+            opcao = prompt(
+                "Escolha uma opção:\n" +
+                "[1] Somar dois números\n" +
+                "[2] Subtrair dois números\n" +
+                "[3] Buscar quantidade de números pares\n" +
+                "[4] Buscar quantidade de números ímpares\n" +
+                "[5] Buscar quantidade de números primos\n" +
+                "[6] Sair"
+            );
+
+            switch (opcao) {
+                case "1":
+                    let a1 = parseFloat(prompt("Informe o primeiro número:"));
+                    let b1 = parseFloat(prompt("Informe o segundo número:"));
+                    console.log(`Resultado da soma: ${somar(a1, b1)}`);
+                    break;
+
+                case "2":
+                    let a2 = parseFloat(prompt("Informe o primeiro número:"));
+                    let b2 = parseFloat(prompt("Informe o segundo número:"));
+                    console.log(`Resultado da subtração: ${subtrair(a2, b2)}`);
+                    break;
+
+                case "3":
+                    let nPares = parseInt(prompt("Informe um número inteiro:"));
+                    console.log(`Quantidade de números pares até ${nPares}: ${contarParesAte(nPares)}`);
+                    break;
+
+                case "4":
+                    let nImpares = parseInt(prompt("Informe um número inteiro:"));
+                    console.log(`Quantidade de números ímpares até ${nImpares - 1}: ${contarImparesAte(nImpares)}`);
+                    break;
+
+                case "5":
+                    let nPrimos = parseInt(prompt("Informe um número inteiro:"));
+                    console.log(`Quantidade de números primos até ${nPrimos}: ${contarPrimosAte(nPrimos)}`);
+                    break;
+
+                case "6":
+                    console.log("Saindo do programa...");
+                    break;
+
+                default:
+                    console.log("Opção inválida. Tente novamente.");
+            }
+
+        } while (opcao !== "6");
+    </script>
+</body>
+</html>
